@@ -2,11 +2,7 @@
 ## 操作步驟
 ### 建立容器：
 ```
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" \
-   -p 1433:1433 --name sql1 \
-   --platform linux/amd64 \
-   -d \
-   mcr.microsoft.com/mssql/server:2022-latest
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" -p 1433:1433 --name sql1 --platform linux/amd64 -d mcr.microsoft.com/mssql/server:2022-latest
 ```
 ### 開啟 SSMS (Azure Data Studio) 建立一個測試的DB
 ```
