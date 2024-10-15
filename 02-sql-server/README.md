@@ -20,11 +20,7 @@ docker container rm sql1
 ```
 ### 重新建立容器
 ```
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" \
-   -p 1433:1433 --name sql1 \
-   --platform linux/amd64 \
-   -d \
-   mcr.microsoft.com/mssql/server:2022-latest
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" -p 1433:1433 --name sql1 --platform linux/amd64 -d mcr.microsoft.com/mssql/server:2022-latest
 ```
 ### 查看原本建立的DB是否還存在
 
@@ -34,12 +30,7 @@ docker volume create sql1-db-data
 ```
 ### 調整啟動參數
 ```
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" \
-   -p 1433:1433 --name sql1 \
-   --platform linux/amd64 \
-   -v sql1-db-data:/var/opt/mssql \
-   -d \
-   mcr.microsoft.com/mssql/server:2022-latest
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" -p 1433:1433 --name sql1 --platform linux/amd64 -v sql1-db-data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
 ```
 ### 再建立DB，測試容器刪除後重啟是否還會存在
 
@@ -47,12 +38,7 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" \
 需要先建立預計要掛載的目錄 `db-data`
 確認當前目錄後執行 docker 命令
 ```
-docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" \
-   -p 1433:1433 --name sql1 \
-   --platform linux/amd64 \
-   -v ./db-data:/var/opt/mssql \
-   -d \
-   mcr.microsoft.com/mssql/server:2022-latest
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=MyPass@word" -p 1433:1433 --name sql1 --platform linux/amd64 -v ./db-data:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
 ```
 
 ## 小結
