@@ -1,0 +1,9 @@
+services:
+  my-vue-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-vue-app-compose
+    ports:
+      - "5568:80"
+    restart: always
